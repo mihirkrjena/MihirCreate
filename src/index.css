@@ -1,0 +1,420 @@
+@import 'tailwindcss';
+
+@theme {
+  /* Soft, light, airy palette */
+  --color-bg: #f4f1fb;
+  --color-bg-soft: #ece6f7;
+  --color-surface: #ffffff;
+  --color-primary: #8b7bd8;
+  --color-primary-bright: #a594e8;
+  --color-primary-deep: #6d5bc4;
+  --color-mint: #9fd8c6;
+  --color-peach: #f4c2b4;
+  --color-sky: #aed4f0;
+  --color-rose: #f0aec9;
+  --color-ink: #3a3550;
+  --color-ink-soft: #6b6480;
+  --color-muted: #9b94b0;
+
+  --font-display: 'Sora', 'Inter', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  --ease-silk: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+:root {
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  cursor: none;
+}
+
+::selection {
+  background: rgba(139, 123, 216, 0.28);
+  color: #3a3550;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+/* ---------- Typography ---------- */
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.03em;
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.tracking-mega {
+  letter-spacing: -0.05em;
+}
+
+/* ---------- Noise overlay ---------- */
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 60;
+  opacity: 0.025;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---------- Glass (light) ---------- */
+.glass {
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 8px 40px rgba(109, 91, 196, 0.08);
+}
+
+.glass-strong {
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(26px) saturate(150%);
+  -webkit-backdrop-filter: blur(26px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 12px 50px rgba(109, 91, 196, 0.12);
+}
+
+/* ---------- Glow ---------- */
+.glow-primary {
+  box-shadow:
+    0 0 40px rgba(139, 123, 216, 0.3),
+    0 0 80px rgba(139, 123, 216, 0.12);
+}
+
+.text-glow {
+  text-shadow:
+    0 0 30px rgba(139, 123, 216, 0.35),
+    0 0 60px rgba(169, 148, 232, 0.2);
+}
+
+/* ---------- Animated gradient text ---------- */
+.gradient-text {
+  background: linear-gradient(
+    120deg,
+    #6d5bc4 0%,
+    #9fd8c6 30%,
+    #f0aec9 55%,
+    #aed4f0 80%,
+    #6d5bc4 100%
+  );
+  background-size: 250% 250%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-shift 8s ease-in-out infinite;
+}
+
+@keyframes gradient-shift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* ---------- Aurora background ---------- */
+.aurora {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.aurora-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.6;
+  will-change: transform;
+}
+
+/* ---------- Marquee ---------- */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+
+.animate-marquee-reverse {
+  animation: marquee 40s linear infinite reverse;
+}
+
+/* ---------- Floating ---------- */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-18px) rotate(2deg);
+  }
+}
+
+.animate-float {
+  animation: float 7s var(--ease-silk) infinite;
+}
+
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+.animate-float-slow {
+  animation: float-slow 10s ease-in-out infinite;
+}
+
+/* ---------- Morph (blobs that breathe) ---------- */
+@keyframes morph {
+  0%,
+  100% {
+    border-radius: 42% 58% 63% 37% / 42% 38% 62% 58%;
+  }
+  33% {
+    border-radius: 70% 30% 50% 50% / 55% 60% 40% 45%;
+  }
+  66% {
+    border-radius: 35% 65% 38% 62% / 60% 35% 65% 40%;
+  }
+}
+
+.animate-morph {
+  animation: morph 14s ease-in-out infinite;
+}
+
+@keyframes morph-slow {
+  0%,
+  100% {
+    border-radius: 55% 45% 35% 65% / 50% 55% 45% 50%;
+  }
+  50% {
+    border-radius: 40% 60% 60% 40% / 65% 40% 60% 35%;
+  }
+}
+
+.animate-morph-slow {
+  animation: morph-slow 20s ease-in-out infinite;
+}
+
+/* ---------- Shimmer line ---------- */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(139, 123, 216, 0.5),
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3s linear infinite;
+}
+
+/* ---------- Scroll indicator ---------- */
+@keyframes scroll-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(8px);
+    opacity: 0.5;
+  }
+}
+
+.animate-scroll-bounce {
+  animation: scroll-bounce 1.8s ease-in-out infinite;
+}
+
+/* ---------- Grid background ---------- */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(109, 91, 196, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(109, 91, 196, 0.06) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+  -webkit-mask-image: radial-gradient(
+    ellipse at center,
+    black 30%,
+    transparent 75%
+  );
+}
+
+/* ---------- Pulse ring ---------- */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 3s ease-out infinite;
+}
+
+/* ---------- Drift (gentle background movement) ---------- */
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(40px, -30px) scale(1.06);
+  }
+  50% {
+    transform: translate(-20px, 30px) scale(0.96);
+  }
+  75% {
+    transform: translate(-30px, -20px) scale(1.04);
+  }
+}
+
+.animate-drift {
+  animation: drift 22s ease-in-out infinite;
+}
+
+/* ---------- Wave divider ---------- */
+@keyframes wave-move {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-25%);
+  }
+}
+
+/* ---------- Typing caret ---------- */
+@keyframes blink-caret {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.animate-caret {
+  animation: blink-caret 1s step-end infinite;
+}
+
+/* ---------- Char reveal ---------- */
+.char {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+/* ---------- Magnetic button base ---------- */
+.magnetic {
+  will-change: transform;
+}
+
+/* ---------- Hide cursor on touch ---------- */
+@media (hover: none) {
+  body {
+    cursor: auto;
+  }
+}
+
+/* ---------- Form inputs ---------- */
+.input {
+  width: 100%;
+  border-radius: 0.9rem;
+  border: 1px solid rgba(109, 91, 196, 0.18);
+  background: rgba(255, 255, 255, 0.7);
+  padding: 0.85rem 1rem;
+  font-size: 0.95rem;
+  color: var(--color-ink);
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s, background 0.3s,
+    transform 0.3s;
+}
+.input::placeholder {
+  color: rgba(58, 53, 80, 0.3);
+}
+.input:focus {
+  border-color: rgba(139, 123, 216, 0.55);
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 0 0 4px rgba(139, 123, 216, 0.12);
+  transform: translateY(-1px);
+}
+
+/* ---------- Reduce motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
