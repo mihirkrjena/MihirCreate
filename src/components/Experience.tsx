@@ -3,25 +3,25 @@ import RevealText, { FadeUp } from './Reveal';
 
 const roles = [
   {
-    period: '2023 — Present',
-    role: 'Independent Designer & Creative Frontend',
-    org: 'Freelance',
-    desc: 'Partnering with startups and studios on end-to-end product design and motion-rich frontend builds.',
-    tags: ['UI/UX', 'React', 'Motion'],
+    period: '2026 — Present',
+    role: 'Freelance UI/UX Designer',
+    org: 'Independent',
+    desc: 'Working with clients on end-to-end UI/UX design — from concept and wireframes to polished, ready-to-build interfaces.',
+    tags: ['UI/UX', 'Figma', 'Freelance'],
   },
   {
-    period: '2022 — 2023',
-    role: 'Product Designer',
-    org: 'Studio Lore',
-    desc: 'Led design on two shipped mobile apps and built the studio\'s first reusable design system.',
-    tags: ['Mobile', 'Design Systems'],
+    period: '2024 — 2025',
+    role: 'UI/UX Design Internship',
+    org: '',
+    desc: 'Hands-on experience designing real interfaces, working through the full process from research to final UI.',
+    tags: ['UI Design', 'Wireframing'],
   },
   {
-    period: '2021 — 2022',
-    role: 'UI Designer',
-    org: 'Brightwave Agency',
-    desc: 'Designed marketing sites and landing pages for fintech and SaaS clients. First taste of motion design.',
-    tags: ['Landing Pages', 'Brand'],
+    period: '2024',
+    role: 'Google UX Design Certificate',
+    org: 'Google',
+    desc: 'Completed a structured program covering UX research, wireframing, prototyping, and usability testing.',
+    tags: ['UX Research', 'Prototyping'],
   },
 ];
 
@@ -81,7 +81,7 @@ export default function Experience() {
                 <h3 className="mt-2 font-display text-lg font-medium text-[#3a3550]">
                   {r.role}
                 </h3>
-                <div className="text-sm text-violet-500">{r.org}</div>
+                {r.org && <div className="text-sm text-violet-500">{r.org}</div>}
                 <p className="mt-3 text-sm text-[#6b6480]">{r.desc}</p>
                 <div
                   className={`mt-4 flex flex-wrap gap-2 ${

@@ -7,6 +7,8 @@ type Props = {
   strength?: number;
   as?: 'button' | 'a' | 'div';
   href?: string;
+  target?: string;
+  rel?: string;
   onClick?: () => void;
   cursorLabel?: string;
 };
@@ -22,6 +24,8 @@ export default function Magnetic({
   strength = 0.4,
   as = 'div',
   href,
+  target,
+  rel,
   onClick,
   cursorLabel,
 }: Props) {
@@ -73,7 +77,7 @@ export default function Magnetic({
   }
   if (as === 'a') {
     return (
-      <a href={href} onClick={onClick} className="block">
+      <a href={href} target={target} rel={rel} onClick={onClick} className="block">
         {content}
       </a>
     );

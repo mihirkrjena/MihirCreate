@@ -19,111 +19,107 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    id: 'nebula',
+    id: 'controlx',
     index: '01',
-    title: 'Nebula Finance',
-    category: 'Fintech Dashboard',
-    year: '2025',
+    title: 'control.x',
+    category: 'Product Landing Page',
+    year: '2026',
     summary:
-      'A next-gen wealth dashboard turning complex portfolio data into a calm, glanceable experience.',
-    cover:
-      'https://images.pexels.com/photos/6801648/pexels-photo-6801648.jpeg?auto=compress&cs=tinysrgb&w=1600',
-    accent: '#7c3aed',
-    tags: ['UI Design', 'Design System', 'Data Viz', 'React'],
+      'A dark, precision-focused landing page for a premium wireless controller — built to feel as tactile as the hardware itself.',
+    cover: '/images/controlx-cover.png',
+    accent: '#8b5cf6',
+    tags: ['UI Design', 'Landing Page', 'Product Design', 'Figma'],
     overview:
-      'Nebula reimagines personal finance for a generation that grew up on apps, not spreadsheets. The dashboard surfaces net worth, allocation, and cash flow as living, breathing visualizations.',
+      'control.x is a concept product page for a premium wireless gaming controller. The goal was to design an experience that felt as engineered and deliberate as the product it sells — no clutter, just form, grip, and detail.',
     process:
-      'Eight weeks from kickoff to handoff. Bi-weekly stakeholder reviews, a living Figma library, and a motion spec delivered alongside the production build.',
+      'Designed end-to-end in Figma: layout exploration, close-up product photography grid, iconography for key features, and a dark UI system built around a single soft radial glow.',
     research:
-      'Interviews with 14 investors aged 22–38 revealed a shared anxiety: tools built for traders felt hostile to long-term thinkers. We designed for calm confidence instead.',
+      'Looked at how gaming and hardware brands (Xbox, Razer, SteelSeries) use macro photography to sell texture and precision — decided the hero needed to show the controller from multiple close angles rather than one hero shot alone.',
     wireframes:
-      'Low-fidelity flows mapped every account state — empty, loading, error, reconciling — before a single pixel of color was placed.',
+      'Started with a simple two-column hero: bold headline on the left, a photo grid on the right showing grip texture, triggers, and thumbsticks up close — letting the product details do the selling.',
     ui:
-      'A deep-space palette with a single luminous accent. Numbers use a tabular variant so columns never twitch on update.',
+      'An all-black canvas with a single soft gradient orb behind the headline for depth. Feature icons (ergonomic design, haptic feedback, bluetooth) sit in minimal bordered tiles below the fold, keeping the page scannable.',
     prototype:
-      'Interactive Figma prototype with real data plugged in via a JSON fixture, used for usability testing with 9 participants.',
+      'Built as a high-fidelity Figma prototype with hover states on the CTA buttons and the feature icon tiles.',
     results:
-      'Daily active sessions up 63%, support tickets about "where is my money" down 41% in the first quarter after launch.',
+      'A clean, confident product-page template that could be adapted for any hardware or gadget brand wanting a premium, minimal feel.',
   },
   {
-    id: 'pulse',
+    id: 'instax',
     index: '02',
-    title: 'Pulse Health',
-    category: 'Mobile App',
-    year: '2024',
+    title: 'Instax Mini 12',
+    category: 'E-commerce Product Page',
+    year: '2026',
     summary:
-      'A mindful wellness companion that makes habit-building feel like a gentle ritual, not a chore.',
-    cover:
-      'https://images.pexels.com/photos/4386466/pexels-photo-4386466.jpeg?auto=compress&cs=tinysrgb&w=1600',
-    accent: '#22d3ee',
-    tags: ['UX Research', 'Mobile', 'Prototyping', 'Animation'],
+      'A playful, pastel-toned e-commerce page for the Fujifilm Instax Mini 12 — designed to make an instant camera feel as fun to shop for as it is to use.',
+    cover: '/images/instax-cover.png',
+    accent: '#5b9bd5',
+    tags: ['UI Design', 'E-commerce', 'Product Design', 'Figma'],
     overview:
-      'Pulse helps people build wellness habits through ambient nudges, gentle streaks, and a breathing rhythm that adapts to the time of day.',
+      'A full product page concept for the Instax Mini 12, covering everything from the hero and color variants to a features breakdown, product gallery, and footer — a complete shopping journey for a single product.',
     process:
-      'Six sprints with a clinical advisor. Every interaction was reviewed against accessibility WCAG AA and tested one-handed.',
+      'Designed as a full-page scroll experience in Figma, structured section by section: hero with color swatches, product highlight, variant cards, feature grid, lifestyle gallery, and a closing CTA.',
     research:
-      'Diary studies with 20 users over two weeks showed guilt was the number one reason people abandoned habit apps. We removed streaks-as-pressure entirely.',
+      'Studied how playful consumer brands balance product photography with soft, approachable color palettes — leaned into a sky-blue gradient background with cloud textures to match the camera\'s pastel, joyful identity.',
     wireframes:
-      'Three core flows — morning check-in, midday breath, evening reflection — sketched as a continuous loop, not separate screens.',
+      'Mapped the page as a narrative: hero (buy now), understand the product (features), see the variants (color options), see it in the wild (gallery), then convert again at the bottom.',
     ui:
-      'Soft gradients shift hue with the sun. Typography breathes; nothing snaps. The whole interface moves at 0.7x normal speed on purpose.',
+      'A pastel blue palette with soft cloud-brush section dividers, rounded pill buttons, and a numbered image carousel (01/04) in the hero for browsing color variants.',
     prototype:
-      'A click-through plus a haptic prototype on TestFlight so we could feel the vibration patterns in hand, not just on screen.',
+      'Prototyped in Figma with interactive states for the color swatches and a swipeable product gallery.',
     results:
-      '30-day retention hit 58% (industry avg ~23%), and the average session length fell — which we celebrated, because it meant people got what they needed faster.',
+      'A complete, ready-to-build e-commerce template — colorful and on-brand, structured the way a real product detail page needs to be to convert browsers into buyers.',
   },
   {
-    id: 'forge',
+    id: 'veels',
     index: '03',
-    title: 'Forge Studio',
-    category: 'Brand & Web',
-    year: '2024',
+    title: 'Veels — Porsche 911',
+    category: 'Automotive Landing Page',
+    year: '2026',
     summary:
-      'Identity and marketing site for an indie game studio that wanted to feel like the games they make — bold, strange, alive.',
-    cover:
-      'https://images.pexels.com/photos/316466/pexels-photo-316466.jpeg?auto=compress&cs=tinysrgb&w=1600',
-    accent: '#3b82f6',
-    tags: ['Brand Identity', 'Landing Page', 'WebGL', 'Art Direction'],
+      'An editorial, deep-maroon landing page celebrating the Porsche 911 — designed to feel like a print magazine spread more than a typical car dealership site.',
+    cover: '/images/veels-cover.png',
+    accent: '#7a2e2e',
+    tags: ['Brand & Web', 'Landing Page', 'Art Direction', 'Figma'],
     overview:
-      'Forge needed a presence that signaled craft without taking itself seriously. We built a system that bends, glitches, and winks.',
+      'Veels is a concept automotive brand site built around a single hero car — the Porsche 911. The design leans into large type, oversized background typography, and full-bleed photography to give the page a premium, editorial feel.',
     process:
-      'A two-week sprint pairing identity design with a prototype site so the brand and the experience evolved together, not in sequence.',
+      'Designed in Figma with a strong art-direction-first approach: chose the color and type system before laying out any content, then built the grid around the car photography.',
     research:
-      'We audited 30 indie studio sites. The memorable ones all had one thing in common: they let personality override polish in at least one place.',
+      'Looked at how luxury automotive and fashion brands use oversized background wordmarks (like "PORSCHE 911" ghosted behind content) to create scale and drama without needing more imagery.',
     wireframes:
-      'The hero was storyboarded as a film before it was wireframed as a page — motion came first, layout second.',
+      'Structured around alternating full-width photo moments and text blocks — a rear three-quarter shot, then a features row, then a "history strip" table listing model years and details.',
     ui:
-      'A heavy display face paired with a razor-thin body. Neon edges on near-black. The logo morphs between three states depending on scroll position.',
+      'A deep maroon backdrop with warm off-white type, thin hairline dividers, and a serif-adjacent sans headline face that reads as confident and classic rather than sporty and loud.',
     prototype:
-      'A live coded prototype with real shaders, so stakeholders felt the weight of the page rather than imagining it from a Figma mock.',
+      'Delivered as a high-fidelity Figma mockup with a scroll-driven layout, ready to hand off for a one-page marketing site build.',
     results:
-      'Launch week drove a 4x increase in demo requests and got featured on two design galleries.',
+      'A distinctive brand-and-web concept that shows range beyond typical SaaS/app UI — proof of comfort with art direction, typography, and photography-led layouts.',
   },
   {
-    id: 'terra',
+    id: 'metal',
     index: '04',
-    title: 'Terra Maps',
-    category: 'Product Design',
-    year: '2023',
+    title: 'metal.',
+    category: 'Art & Fashion E-commerce',
+    year: '2026',
     summary:
-      'A collaborative mapping tool for field researchers who work offline more often than on.',
-    cover:
-      'https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?auto=compress&cs=tinysrgb&w=1600',
-    accent: '#a855f7',
-    tags: ['Product Design', 'Offline-First', 'UX', 'Systems'],
+      'A surreal, gallery-like storefront concept built around iridescent 3D-rendered flowers — where the product photography is the art.',
+    cover: '/images/metal-cover.png',
+    accent: '#c084fc',
+    tags: ['UI Design', 'Art Direction', 'E-commerce', 'Figma'],
     overview:
-      'Terra gives field teams a shared map that syncs when it can and never loses data when it can\'t. Designed for mud, not just meetings.',
+      '"metal." is a concept store for surreal, chrome-and-pearl 3D art objects. The interface gets out of the way almost entirely, letting oversized iridescent flower renders carry the entire visual identity.',
     process:
-      'Three months, with two designers embedded in field trials for a week each. Nothing teaches you offline UX like losing signal yourself.',
+      'Designed in Figma as a long-scroll story: hero product, a "believe or not" split-image statement section, a testimonial framed in glass, then a closing manifesto section before the footer.',
     research:
-      'We shadowed biologists, surveyors, and disaster-relief mappers. Their number one complaint: every "offline" app they\'d tried silently lied about what it had saved.',
+      'Referenced how contemporary digital-art and NFT-adjacent brands use negative space and italic serif type against near-black backgrounds to make renders feel like gallery pieces rather than product shots.',
     wireframes:
-      'Every screen had a dual state — connected and severed — designed side by side so the offline experience was a first-class citizen, not a fallback.',
+      'Each section was designed around a single striking image first, with copy kept short and set in a mix of elegant italic serif and a soft rounded sans for contrast.',
     ui:
-      'High-contrast outdoor palette that switches to a dark, battery-saving mode automatically after sunset.',
+      'Near-black backgrounds throughout, with iridescent chrome/pastel renders as the only color source. Pill-shaped buttons, a glass-morphism quote card, and generous whitespace keep the mood premium and quiet.',
     prototype:
-      'A working offline prototype on a low-end Android device, tested in actual field conditions, not just on a desk.',
+      'Built as a scroll-based Figma prototype exploring pacing — how much white space and copy sits between each large visual moment.',
     results:
-      'Adopted by 12 field teams in year one; the offline sync reliability rating hit 99.2% in real-world use.',
+      'A strong art-direction-led concept that stands out from typical SaaS-style portfolio pieces, showing range into fashion/lifestyle and gallery-style e-commerce.',
   },
 ];

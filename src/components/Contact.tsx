@@ -1,17 +1,19 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Send, Check, Loader2 } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 import { supabase } from '@/lib/supabase';
 import RevealText, { FadeUp } from './Reveal';
 import Magnetic from './Magnetic';
 import FloatingShapes from './FloatingShapes';
 
+const EMAILJS_SERVICE_ID = 'service_x7tmeuc';
+const EMAILJS_TEMPLATE_ID = 'template_1jin9bi';
+const EMAILJS_PUBLIC_KEY = 'WYmdWigF51YkPpsPU';
+
 const socials = [
-  { label: 'Dribbble', href: '#' },
-  { label: 'Behance', href: '#' },
-  { label: 'LinkedIn', href: '#' },
-  { label: 'GitHub', href: '#' },
-  { label: 'X', href: '#' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/mihir-kumar-jena-3950a325b/' },
+  { label: 'GitHub', href: 'https://github.com/mihirkrjena' },
 ];
 
 type Status = 'idle' | 'sending' | 'sent' | 'error';
@@ -39,6 +41,24 @@ export default function Contact() {
         message: form.message,
       });
       if (dbError) throw dbError;
+
+      try {
+        await emailjs.send(
+          EMAILJS_SERVICE_ID,
+          EMAILJS_TEMPLATE_ID,
+          {
+            name: form.name,
+            email: form.email,
+            message: form.message,
+          },
+          { publicKey: EMAILJS_PUBLIC_KEY }
+        );
+      } catch (emailErr) {
+        // Message is already saved in Supabase even if the email notification fails,
+        // so we don't block the "sent" success state on this.
+        console.error('EmailJS notification failed:', emailErr);
+      }
+
       setStatus('sent');
       setForm({ name: '', email: '', message: '' });
       setTimeout(() => setStatus('idle'), 4000);
@@ -97,6 +117,8 @@ export default function Contact() {
                   key={s.label}
                   as="a"
                   href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   strength={0.6}
                   cursorLabel="Visit"
                 >

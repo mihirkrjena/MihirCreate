@@ -1,110 +1,164 @@
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { PenTool, Layers, Sparkles, MessageCircle, RefreshCw, Zap, ArrowUpRight } from 'lucide-react';
 import RevealText, { FadeUp } from './Reveal';
 
-const testimonials = [
+const reasons = [
   {
-    quote:
-      'Mihir doesn\'t just design screens — he designs the feeling you get when you use them. Our app finally feels like ours.',
-    name: 'Aarav Mehta',
-    title: 'Founder, Nebula Finance',
+    icon: PenTool,
+    title: 'Detail-obsessed craft',
+    desc: 'Every spacing, color, and micro-interaction is intentional — not left to default settings.',
     color: '#a594e8',
   },
   {
-    quote:
-      'The motion work alone elevated our brand. Stakeholders went from skeptical to standing ovation in one review.',
-    name: 'Lena Park',
-    title: 'Head of Product, Pulse Health',
+    icon: Layers,
+    title: 'End-to-end thinking',
+    desc: 'From the first wireframe to a polished, interactive prototype — I own the full design journey.',
     color: '#9fd8c6',
   },
   {
-    quote:
-      'He handed off a design system so clean our devs actually used it. That never happens.',
-    name: 'Diego Ramos',
-    title: 'Engineering Lead, Forge Studio',
+    icon: Sparkles,
+    title: 'Fresh, modern aesthetic',
+    desc: 'No generic templates. Every project gets its own visual identity built around what it needs to say.',
     color: '#aed4f0',
   },
   {
-    quote:
-      'Rare to find a designer who thinks in flows, not just frames. Mihir is that designer.',
-    name: 'Sofia Lindqvist',
-    title: 'CEO, Terra Maps',
+    icon: MessageCircle,
+    title: 'Clear communication',
+    desc: 'You always know where a project stands — I keep feedback loops short and honest.',
     color: '#f0aec9',
   },
   {
-    quote:
-      'Every detail had intent. Nothing was accidental. Working with him felt like watching a craftsman at a bench.',
-    name: 'Jordan Blake',
-    title: 'PM, Brightwave',
+    icon: RefreshCw,
+    title: 'Iterative process',
+    desc: 'Designs evolve through real feedback, not guesswork — refined until they actually feel right.',
     color: '#f4c2b4',
   },
   {
-    quote:
-      'He shipped frontend that matched the design pixel-for-pixel. The handoff gap just disappeared.',
-    name: 'Yuki Tanaka',
-    title: 'CTO, Studio Lore',
+    icon: Zap,
+    title: 'Fast, reliable turnaround',
+    desc: 'Momentum matters. I move quickly without cutting corners on quality.',
     color: '#a594e8',
   },
 ];
 
-function Card({ t }: { t: (typeof testimonials)[number] }) {
+function Row({
+  r,
+  index,
+  active,
+  onEnter,
+  onLeave,
+}: {
+  r: (typeof reasons)[number];
+  index: number;
+  active: boolean;
+  onEnter: () => void;
+  onLeave: () => void;
+}) {
+  const Icon = r.icon;
+
   return (
-    <div className="glass mx-3 w-[340px] shrink-0 rotate-[-1.5deg] rounded-3xl p-7 transition-all duration-500 hover:rotate-0 hover:scale-[1.03] hover:shadow-xl hover:shadow-violet-200/50">
-      <svg
-        className="mb-4 h-7 w-7"
-        fill={t.color}
-        viewBox="0 0 24 24"
-        opacity={0.6}
-      >
-        <path d="M9.5 8c-2.5 0-4.5 2-4.5 4.5S7 17 9.5 17c.3 0 .5 0 .8-.1-1 1.3-2.6 2.1-4.3 2.1v2c3.6 0 6.5-2.9 6.5-6.5V12.5C12.5 10 10.5 8 9.5 8zm9 0c-2.5 0-4.5 2-4.5 4.5S16 17 18.5 17c.3 0 .5 0 .8-.1-1 1.3-2.6 2.1-4.3 2.1v2c3.6 0 6.5-2.9 6.5-6.5V12.5C21.5 10 19.5 8 18.5 8z" />
-      </svg>
-      <p className="text-sm leading-relaxed text-[#4a4460]">{t.quote}</p>
-      <div className="mt-6 flex items-center gap-3">
-        <div
-          className="flex h-10 w-10 items-center justify-center rounded-full text-sm font-semibold text-white shadow-sm"
-          style={{ background: `linear-gradient(135deg, ${t.color}, #aed4f0)` }}
+    <motion.div
+      onMouseEnter={onEnter}
+      onMouseLeave={onLeave}
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-10% 0px' }}
+      transition={{ delay: index * 0.06, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+      className="group relative cursor-none overflow-hidden border-b border-violet-100 py-5 md:py-6"
+      data-cursor="hover"
+    >
+      {/* glow that appears behind the row on hover */}
+      <div
+        className="pointer-events-none absolute inset-y-0 left-0 right-0 -z-10 opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-40"
+        style={{ background: `radial-gradient(600px circle at 15% 50%, ${r.color}, transparent 70%)` }}
+      />
+
+      <div className="flex items-center gap-5 md:gap-8">
+        <span
+          className="font-mono text-xs text-violet-300 transition-colors duration-500 md:text-sm"
+          style={{ color: active ? r.color : undefined }}
         >
-          {t.name.charAt(0)}
+          {String(index + 1).padStart(2, '0')}
+        </span>
+
+        <motion.div
+          animate={{ rotate: active ? 12 : 0, scale: active ? 1.1 : 1 }}
+          transition={{ type: 'spring', stiffness: 300, damping: 15 }}
+          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-violet-200 bg-white/70 shadow-sm md:h-10 md:w-10"
+          style={{ color: r.color }}
+        >
+          <Icon className="h-4 w-4" strokeWidth={1.75} />
+        </motion.div>
+
+        <div className="flex-1">
+          <h3 className="font-display text-xl font-light tracking-tight text-[#3a3550] transition-transform duration-500 group-hover:translate-x-1 md:text-2xl">
+            {r.title}
+          </h3>
+          <div
+            className="mt-1.5 h-px w-8 origin-left scale-x-0 transition-transform duration-500 group-hover:scale-x-100"
+            style={{ background: r.color }}
+          />
         </div>
-        <div>
-          <div className="text-sm font-medium text-[#3a3550]">{t.name}</div>
-          <div className="text-xs text-[#6b6480]">{t.title}</div>
-        </div>
+
+        <ArrowUpRight
+          className={`h-4 w-4 shrink-0 text-violet-300 transition-all duration-500 md:h-5 md:w-5 ${
+            active ? 'translate-x-0 -translate-y-0 rotate-0 text-violet-500 opacity-100' : '-translate-y-1 translate-x-1 opacity-0'
+          }`}
+        />
       </div>
-    </div>
+
+      <AnimatePresence>
+        {active && (
+          <motion.p
+            initial={{ opacity: 0, height: 0, marginTop: 0 }}
+            animate={{ opacity: 1, height: 'auto', marginTop: 16 }}
+            exit={{ opacity: 0, height: 0, marginTop: 0 }}
+            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            className="overflow-hidden pl-[3.75rem] text-sm leading-relaxed text-[#6b6480] md:pl-[5.25rem] md:text-base"
+          >
+            {r.desc}
+          </motion.p>
+        )}
+      </AnimatePresence>
+    </motion.div>
   );
 }
 
 export default function Testimonials() {
-  const row1 = testimonials.slice(0, 3);
-  const row2 = testimonials.slice(3);
+  const [active, setActive] = useState<number | null>(null);
 
   return (
-    <section className="relative py-32 md:py-48">
-      <div className="mx-auto max-w-7xl px-6 text-center">
+    <section className="relative mx-auto max-w-5xl px-6 py-24 md:py-36">
+      <div className="text-center">
         <FadeUp className="inline-block">
           <span className="font-mono text-xs uppercase tracking-[0.4em] text-violet-500/70">
-            07 — Testimonials
+            07 — Approach
           </span>
         </FadeUp>
         <RevealText
           as="h2"
-          text="Kind words from kind people."
+          text="Why work with me."
           className="mx-auto mt-6 max-w-2xl font-display text-4xl font-light tracking-tight text-[#3a3550] md:text-6xl"
         />
+        <FadeUp delay={0.2}>
+          <p className="mx-auto mt-6 max-w-xl text-[#6b6480]">
+            Hover over each principle — it's how I actually work, not a list of buzzwords.
+          </p>
+        </FadeUp>
       </div>
 
-      <div className="relative mt-20 overflow-hidden">
-        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-32 bg-gradient-to-r from-[#f4f1fb] to-transparent" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-32 bg-gradient-to-l from-[#f4f1fb] to-transparent" />
-        <div className="flex w-max animate-marquee">
-          {[...row1, ...row1, ...row1].map((t, i) => (
-            <Card key={`a${i}`} t={t} />
-          ))}
-        </div>
-        <div className="mt-6 flex w-max animate-marquee-reverse">
-          {[...row2, ...row2, ...row2].map((t, i) => (
-            <Card key={`b${i}`} t={t} />
-          ))}
-        </div>
+      <div className="mt-12 border-t border-violet-100">
+        {reasons.map((r, i) => (
+          <Row
+            key={r.title}
+            r={r}
+            index={i}
+            active={active === i}
+            onEnter={() => setActive(i)}
+            onLeave={() => setActive(null)}
+          />
+        ))}
       </div>
     </section>
   );
