@@ -212,8 +212,9 @@ export default function Projects() {
         </div>
         <FadeUp delay={0.2}>
           <p className="max-w-sm text-sm text-[#6b6480]">
-            A selection of recent work across fintech, health, brand, and
-            product. Click any project to open the full case study.
+            A selection of recent UI/UX concepts across product landing
+            pages, e-commerce, and brand storytelling. Click any project to
+            open the full case study.
           </p>
         </FadeUp>
       </div>
@@ -231,19 +232,12 @@ export default function Projects() {
       </div>
 
       <div className="mt-16 flex justify-center">
-        <Magnetic
-  as="button"
-  strength={0.5}
-  cursorLabel="Contact"
-  onClick={() =>
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
-  }
->
-  <span className="flex items-center gap-3 rounded-full border border-violet-300/50 bg-white/60 px-7 py-3.5 text-sm text-violet-600 transition-all hover:border-violet-400 hover:bg-white/90 hover:shadow-lg hover:shadow-violet-200/50">
-    Have a project in mind?
-    <ArrowUpRight className="h-4 w-4" />
-  </span>
-</Magnetic>
+        <Magnetic as="button" strength={0.5} cursorLabel="Contact">
+          <span className="flex items-center gap-3 rounded-full border border-violet-300/50 bg-white/60 px-7 py-3.5 text-sm text-violet-600 transition-all hover:border-violet-400 hover:bg-white/90 hover:shadow-lg hover:shadow-violet-200/50">
+            Have a project in mind?
+            <ArrowUpRight className="h-4 w-4" />
+          </span>
+        </Magnetic>
       </div>
 
       <AnimatePresence>
